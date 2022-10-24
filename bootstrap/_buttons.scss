@@ -1,0 +1,174 @@
+//
+// Base styles
+//
+
+$enable-rounded: true;
+
+.btn {
+  --#{$prefix}btn-padding-x: 1.05rem;
+  --#{$prefix}btn-padding-y: .605rem;
+  --#{$prefix}btn-font-family: null;
+  @include rfs($font-size-base, --#{$prefix}btn-font-size);
+  --#{$prefix}btn-font-weight: #{$font-weight-normal};
+  --#{$prefix}btn-line-height: #{$line-height-base};
+  --#{$prefix}btn-color: #{$black};
+  --#{$prefix}btn-bg: transparent;
+  --#{$prefix}btn-border-width: 1px;
+  --#{$prefix}btn-border-color: transparent;
+  --#{$prefix}btn-border-radius: #{$border-radius};
+  --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-disabled-opacity: .65;
+
+  display: inline-block;
+  padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
+  font-family: var(--#{$prefix}btn-font-family);
+  @include font-size(var(--#{$prefix}btn-font-size));
+  font-weight: var(--#{$prefix}btn-font-weight);
+  line-height: var(--#{$prefix}btn-line-height);
+  color: var(--#{$prefix}btn-color);
+  text-align: center;
+  text-decoration: none;
+  white-space: null;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
+  background-color: var(--#{$prefix}btn-bg);
+  background-image: $gradient;
+  border-radius: $border-radius;
+  box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075);
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  &:hover {
+    color: var(--#{$prefix}btn-hover-color);
+    text-decoration: none;
+    background-color: var(--#{$prefix}btn-hover-bg);
+    border-color: var(--#{$prefix}btn-hover-border-color);
+  }
+
+  .btn-check + &:hover {
+    // override for the checkbox/radio buttons
+    color: var(--#{$prefix}btn-color);
+    background-color: var(--#{$prefix}btn-bg);
+    border-color: var(--#{$prefix}btn-border-color);
+  }
+
+  &:focus-visible {
+    color: var(--#{$prefix}btn-hover-color);
+    border-color: var(--#{$prefix}btn-hover-border-color);
+    outline: 0;
+    box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075), 0 0 0 .25rem rgba($blue-lavender, .5);
+  }
+
+  .btn-check:focus-visible + & {
+    border-color: var(--#{$prefix}btn-hover-border-color);
+    outline: 0;
+    box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
+  }
+
+  .btn-check:checked + &,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
+  &.active,
+  &.show {
+    color: var(--#{$prefix}btn-active-color);
+    background-color: var(--#{$prefix}btn-active-bg);
+    background-image: none;
+    border-color: var(--#{$prefix}btn-active-border-color);
+    box-shadow: var(--#{$prefix}btn-active-shadow);
+
+    &:focus-visible {
+      box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
+    }
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    color: var(--#{$prefix}btn-disabled-color);
+    pointer-events: none;
+    background-color: var(--#{$prefix}btn-disabled-bg);
+    background-image: none;
+    border-color: var(--#{$prefix}btn-disabled-border-color);
+    opacity: var(--#{$prefix}btn-disabled-opacity);
+    box-shadow: none;
+  }
+}
+
+.btn-primary {
+  --#{$prefix}btn-color: #{$white};
+  --#{$prefix}btn-bg: #3342f2;
+  --#{$prefix}btn-border-color: #4c5ff7;
+  --#{$prefix}btn-hover-bg: #1117d7;
+  --#{$prefix}btn-hover-color: #{$white};
+  --#{$prefix}btn-hover-border-color: #3342f2;
+  --#{$prefix}btn-focus-shadow-rgb: ${$blue-lavender};
+  --#{$prefix}btn-active-color: #{$white};
+  --#{$prefix}btn-active-bg: #070aad;
+  --#{$prefix}btn-active-border-color: #3342f2;
+  --#{$prefix}btn-active-shadow: #070aad;
+  --#{$prefix}btn-disabled-bg: #a8bdfd;
+  --#{$prefix}btn-disabled-color: #{$black};
+  --#{$prefix}btn-disabled-border-color: #93a9fd;
+
+  &:focus-visible {
+    box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075), 0 0 0 .25rem rgba($blue-lavender, .5);
+  }
+}
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link {
+  --#{$prefix}btn-font-weight: #{$font-weight-normal};
+  --#{$prefix}btn-color: $link-color;
+  --#{$prefix}btn-bg: transparent;
+  --#{$prefix}btn-border-color: transparent;
+  --#{$prefix}btn-hover-color: $link-hover-color;
+  --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-active-color: $link-hover-color;
+  --#{$prefix}btn-active-border-color: transparent;
+  --#{$prefix}btn-disabled-color: $gray;
+  --#{$prefix}btn-disabled-border-color: transparent;
+  --#{$prefix}btn-box-shadow: none;
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix(color-contrast($primary), $primary, 15%))};
+
+  text-decoration: $link-decoration;
+  background-image: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus-visible {
+    color: var(--#{$prefix}btn-color);
+  }
+
+  &:hover {
+    color: var(--#{$prefix}btn-hover-color);
+  }
+
+  // No need for an active state here
+}
+
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  --#{$prefix}btn-padding-x: 1rem;
+  --#{$prefix}btn-padding-y: .5rem;  
+  --#{$prefix}btn-border-radius: .5rem;
+  @include rfs($font-size-lg, --#{$prefix}btn-font-size);
+}
+
+.btn-sm {
+  --#{$prefix}btn-padding-x: .5rem;
+  --#{$prefix}btn-padding-y: .25rem;  
+  --#{$prefix}btn-border-radius: .25rem;
+  @include rfs($font-size-sm, --#{$prefix}btn-font-size);
+}

@@ -1,0 +1,114 @@
+// Variables
+$prefix: np-;
+
+// Colors
+$white: #fff;
+$black: #000;
+$gray: #adb5bd;
+$blue: #0d6efd;
+$green: #198754;
+
+$primary: $blue;
+$secondary: $gray;
+$success: $green;
+
+$blue-lavender: #d4e1ff;
+
+$color-contrast-dark: $black;
+$color-contrast-light: $white;
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio: 4.5;
+
+// Fonts
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base: var(--#{$prefix}font-sans-serif);
+$font-family-code: var(--#{$prefix}font-monospace);
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * .875;
+$font-size-lg: $font-size-base * 1.25;
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
+$font-weight-base: $font-weight-normal;
+
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+// Options
+$enable-container-classes: true;
+$enable-grid-classes: true;
+$enable-cssgrid: false;
+$enable-negative-margins: true;
+
+// Grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+$grid-row-columns: 6;
+
+$container-padding-x: $grid-gutter-width;
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+// Links
+$link-color: $primary;
+$link-decoration: underline;
+$link-hover-color: shift-color($link-color, 20%);
+$link-hover-decoration: null;
+
+// Box shadow
+$box-shadow: 0 .5rem 1rem rgba($black, .15);
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075);
+$box-shadow-lg: 0 1rem 3rem rgba($black, .175);
+$box-shadow-inset: inset 0 1px 2px rgba($black, .075);
+
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+);
+
+// Generals
+$gutters: $spacers;
+$border-radius: .375rem;
+$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
+
+// Body
+$body-bg: $white;
+$body-color: $black;
